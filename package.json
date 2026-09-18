@@ -1,0 +1,47 @@
+{
+  "name": "dsh-balance",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 余额查询插件：在会话里用 /balance 查看账户余额。 / DeepSeek account balance for DeepSeek Harness, available as the /balance command.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DWJZ/dsh-balance.git"
+  },
+  "homepage": "https://github.com/DWJZ/dsh-balance#readme",
+  "keywords": [
+    "deepseek",
+    "harness",
+    "dsh-plugin",
+    "balance"
+  ],
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node test/smoke.mjs"
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "test",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    }
+  }
+}
