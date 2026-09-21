@@ -26,12 +26,14 @@ CNY 总余额 ¥293.58 · 充值 ¥293.58 · 赠送 ¥0.00
 ## 安装
 
 ```sh
-# GitHub 源
+# from GitHub
 dsh plugin --profile web add github:DWJZ/dsh-balance
 
-# 本地开发(profile 直接软链检出目录,改完重启生效)
+# local development (the profile links the checkout, so edits apply on restart)
 dsh plugin --profile web add link:/path/to/dsh-balance
 ```
+
+上面两条命令分别是:从 GitHub 源安装,以及本地开发时软链检出目录(`link:`),后者改完代码重启即生效。
 
 ## 配置
 
@@ -40,12 +42,14 @@ dsh plugin --profile web add link:/path/to/dsh-balance
 ```yaml
 - id: dsh-balance
   config:
-    apiKey: ''                        # 显式密钥；留空表示走 apiKeyRef
-    apiKeyRef: DEEPSEEK_API_KEY       # credentials / 环境变量引用名
+    apiKey: ''                        # explicit key; empty means "use apiKeyRef"
+    apiKeyRef: DEEPSEEK_API_KEY       # credentials / environment reference
     baseUrl: https://api.deepseek.com
     timeoutMs: 10000
-    cacheMs: 30000                    # 一次读取能回答后续调用的时长
+    cacheMs: 30000                    # how long one reading answers later calls
 ```
+
+三个字段读作:`apiKey` 是显式密钥, 留空表示改走 `apiKeyRef`;`apiKeyRef` 是 credentials / 环境变量的引用名;`cacheMs` 是一次读取能回答后续调用的时长。
 
 不可用的取值(引用名不是字符串、超时小于 1 秒)会在加载时直接报错，而不是被静默替换。
 
